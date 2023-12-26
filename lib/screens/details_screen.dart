@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailsScreen extends StatelessWidget {
   final heroTag;
 
-  const DetailPage({super.key, this.heroTag});
+  const DetailsScreen({super.key, this.heroTag});
 
   @override
   Widget build(BuildContext context) {

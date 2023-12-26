@@ -2,31 +2,35 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'detailPage.dart';
+import 'details_screen.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          // Top Line
+          // MARK: - AppBar.
           Padding(
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.all(12),
             child: Row(
               children: [
                 FadeInLeft(
-                    child:
-                        const Icon(Icons.menu, color: Colors.black, size: 30)),
+                  child: const Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
                 const Spacer(),
                 FadeInRight(
                   child: Image.asset(
@@ -44,32 +48,35 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+          // MARK: - Pick Text.
           Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25),
+            padding: const EdgeInsets.only(left: 12, right: 12),
             child: BounceInLeft(
               delay: const Duration(milliseconds: 500),
               child: RichText(
                 text: TextSpan(
-                    text: 'Pick',
-                    style: GoogleFonts.lato(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600),
-                    children: const [
-                      TextSpan(
-                          text: ' the most',
-                          style: TextStyle(
-                              color: Color(0xFFff583b), fontSize: 28)),
-                      TextSpan(
-                          text: '\ncomfort Ride !',
-                          style: TextStyle(color: Colors.black, fontSize: 28)),
-                    ]),
+                  text: 'Pick',
+                  style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600),
+                  children: const [
+                    TextSpan(
+                      text: ' the most',
+                      style: TextStyle(color: Color(0xFFff583b), fontSize: 28),
+                    ),
+                    TextSpan(
+                      text: '\ncomfort Ride !',
+                      style: TextStyle(color: Colors.black, fontSize: 28),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          // Mid Line
+          // MARK: - Scooters Types.
           Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, top: 25),
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 25),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -79,14 +86,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     children: [
                       Container(
-                        width: 60,
+                        width: MediaQuery.of(context).size.width * 0.18,
                         height: 60,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: const Color(0xFFff583b)),
+                          borderRadius: BorderRadius.circular(15),
+                          color: const Color(0xFFff583b),
+                        ),
                         child: const Center(
-                          child:
-                              Icon(Icons.directions_bike, color: Colors.white),
+                          child: Icon(
+                            Icons.directions_bike,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 25),
@@ -101,10 +111,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const DetailPage(
-                                  heroTag: "images/image31.jpg",
-                                )));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const DetailsScreen(
+                                heroTag: "images/image31.jpg"),
+                          ),
+                        );
                       },
                       child: FlipInY(
                         delay: const Duration(milliseconds: 1300),
@@ -173,8 +185,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+          // MARK: - Scooters Types.
           Padding(
-            padding: const EdgeInsets.only(left: 35, right: 25, top: 25),
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 25),
             child: FadeInUp(
               child: Row(
                 children: [
@@ -184,10 +197,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1, color: Colors.black.withOpacity(0.2)),
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white),
+                          border: Border.all(
+                              width: 1, color: Colors.black.withOpacity(0.2)),
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
                         child: Center(
                           child: Container(
                             height: 31,
@@ -203,8 +217,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 31,
                         width: 31,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: const Color(0xFF242224)),
+                          borderRadius: BorderRadius.circular(20),
+                          color: const Color(0xFF242224),
+                        ),
                       ),
                     ],
                   ),
@@ -215,10 +230,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 125,
                         width: MediaQuery.of(context).size.width * 0.68,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            image: const DecorationImage(
-                                image: AssetImage("images/image2.jpg"),
-                                fit: BoxFit.fill)),
+                          borderRadius: BorderRadius.circular(30),
+                          image: const DecorationImage(
+                            image: AssetImage("images/image2.jpg"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                         child: Center(
                           child: Container(
                             width: 40,
@@ -240,10 +257,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
+          // MARK: - Bottom Nav Bar.
           Padding(
             padding: const EdgeInsets.only(
-              top: 100,
+              top: 64,
               left: 40,
             ),
             child: FadeInLeft(
@@ -270,17 +287,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 120,
                     height: 80,
                     decoration: const BoxDecoration(
-                        borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(25)),
-                        color: Color(0xFFff583b)),
+                      borderRadius:
+                          BorderRadius.only(topLeft: Radius.circular(25)),
+                      color: Color(0xFFff583b),
+                    ),
                     child: const Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("more",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18)),
-                          Icon(Icons.keyboard_arrow_down, color: Colors.white)
+                          Text(
+                            "more",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Colors.white,
+                          ),
                         ],
                       ),
                     ),
